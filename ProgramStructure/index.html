@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Structure</title>
+</head>
+
+<body>
+    <h3>Program Structure</h3>
+    <ol>
+        <li>Bindings
+            <ul>
+                <li>
+                    var name = "Ayda"; <br>
+                    const greeting = "Hello "; <br>
+                    console.log(greeting + name); <br>
+                    // → Hello Ayda</li>
+            </ul>
+        </li>
+        <li>Conditional Execution
+            <ul>
+                <li>
+                    let theNumber = Number(prompt("Pick a number")); <br>
+                    if (!Number.isNaN(theNumber)) { <br>
+                    console.log("Your number is the square root of " + <br>
+                    theNumber * theNumber); <br>
+                    }
+                </li>
+                <li>
+                    let num = Number(prompt("Pick a number")); <br>
+                    if (num < 10) { <br>
+                        console.log("Small"); <br>
+                        } else if (num < 100) { <br>
+                            console.log("Medium"); <br>
+                            } else { <br>
+                            console.log("Large"); <br>
+                            } </li>
+            </ul>
+        </li>
+        <li>While AND Do While Loops
+            <ul>
+                <li>
+                    let number = 0; <br>
+                    while (number <= 12) { <br>
+                        console.log(number); <br>
+                        number = number + 2; <br>
+                        } <br>
+                        // → 0 <br>
+                        // → 2 <br>
+                        // … etcetera <br>
+                </li>
+                <li>
+                    let result = 1; <br>
+                    let counter = 0; <br>
+                    while (counter < 10) { <br>
+                        result = result * 2; <br>
+                        counter = counter + 1; <br>
+                        } <br>
+                        console.log(result); <br>
+                        // → 1024 <br>
+                </li>
+                <li>
+                    let yourName; <br>
+                    do { <br>
+                    yourName = prompt("Who are you?"); <br>
+                    } while (!yourName); <br>
+                    console.log(yourName); <br>
+                </li>
+            </ul>
+        </li>
+    </ol>
+</body>
+
+</html>
