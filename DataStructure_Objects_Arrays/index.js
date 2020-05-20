@@ -35,6 +35,7 @@ console.log(objectExample["brand"]); //Mercedes
 console.log(objectExample[2]); //John
 console.log(objectExample["Zamir Kanji"]); //Zamir
 console.log(objectExample.age); //old 
+console.log(objectExample["model"]); // S-Class AMG
 
 //add and delete properties
 objectExample.hairColor = "Black";
