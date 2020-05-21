@@ -156,6 +156,19 @@ console.log(sequence.pop()); // → 5
 console.log(sequence); // → [1, 2, 3, 4]
 
 
+//Object Destructuring 
+let objDest = {
+    name: "Zamir",
+    age: 26, 
+    address: {
+        street: "123 st W",
+        city: "Seattle"
+    },
+    hobbies: ["snowboarding", "music", "games"]
+}
+const { name, age, favoriteFood = "Chinese" } = objDest;
+console.log(name);
+
 //Extra Example
 var objArray = [
     { id: 0, name: 'Object 0', otherProp: '321' },
