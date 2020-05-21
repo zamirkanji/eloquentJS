@@ -84,8 +84,11 @@ console.log(toDoList);
 console.log(urgentTask("buy salami!"));
 console.log(toDoList);
 
-
-
+//Array Destructuring 
+const arrayDest = [two, three, thirdIndex, ...restOfNums] = listOfNumbers;
+console.log(two);
+console.log(thirdIndex);
+console.log(restOfNums);
 
 
 //object - data structure
