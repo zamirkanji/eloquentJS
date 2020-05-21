@@ -29,7 +29,7 @@ function numberEvents(objectArray) {
     let names = []; // new array for all names
     for (let obj of objectArray) { //loop through array to find each object
         console.log(obj); //obj 
-        Object.keys(obj).forEach(p => {
+        obj.name.forEach(p => {
             console.log(p);
             if (!names.includes(p)) {
                 names.push(p);
