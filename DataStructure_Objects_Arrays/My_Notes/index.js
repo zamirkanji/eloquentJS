@@ -29,12 +29,12 @@ function numberEvents(objectArray) {
     let names = []; // new array for all names
     for (let obj of objectArray) { //loop through array to find each object
         console.log(obj); //obj 
-        obj.name.forEach(p => {
-            console.log(p);
-            if (!names.includes(p)) {
-                names.push(p);
-            }
-        })
+        // obj.name.forEach(p => {
+        //     console.log(p);
+        //     if (!names.includes(p)) {
+        //         names.push(p);
+        //     }
+        // })
     }
     return names;
 }
@@ -89,6 +89,18 @@ const arrayDest = [two, three, thirdIndex, ...restOfNums] = listOfNumbers;
 console.log(two);
 console.log(thirdIndex);
 console.log(restOfNums);
+
+//rest parameter (takes in any number of arguments - puts them into an array)
+function max (...numbers) {
+    let result = -Infinity;
+    for (let number of numbers) {
+        if (number > result) {
+            result = number;
+        }
+    }
+    return result;
+}
+console.log(max(5, 6, 3, 20, 69, -10)); // 69
 
 
 //object - data structure
@@ -162,15 +174,16 @@ console.log(sequence); // → [1, 2, 3, 4]
 //Object Destructuring 
 let objDest = {
     name: "Zamir",
-    age: 26, 
+    ageTwo: 26, 
     address: {
         street: "123 st W",
         city: "Seattle"
     },
     hobbies: ["snowboarding", "music", "games"]
 }
-const { name, age, favoriteFood = "Chinese" } = objDest;
+const { name, ageTwo, favoriteFood = "Chinese" } = objDest;
 console.log(name);
+console.log(favoriteFood); // default argument - Chinese
 
 //Extra Example
 var objArray = [
