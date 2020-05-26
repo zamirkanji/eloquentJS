@@ -85,10 +85,15 @@ console.log(urgentTask("buy salami!"));
 console.log(toDoList);
 
 //Array Destructuring 
-const arrayDest = [two, three, thirdIndex, ...restOfNums] = listOfNumbers;
-console.log(two);
-console.log(thirdIndex);
-console.log(restOfNums);
+let listOfNumbers2 = [5, 8, 1, 2, 89, 69, 420, {
+    example: "Object"
+}];
+const alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+const arrayDest = [one,, two, thirdIndex, ...restOfNums] = listOfNumbers2;
+const newList = [...listOfNumbers2, ...alphabet];
+console.log(one); // 5 (i = 0)
+console.log(thirdIndex); // 2 (i = 2)
+console.log(restOfNums); // 89, 69, 420 and obj
 
 //rest parameter (takes in any number of arguments - puts them into an array)
 function max (...numbers) {
@@ -100,10 +105,41 @@ function max (...numbers) {
     }
     return result;
 }
-console.log(max(5, 6, 3, 20, 69, -10)); // 69
+console.log(max(5, 6, 3, 20, 69, -10)); // 69 //Condensing multiple args into an array
+
+//Example Spread Operator - taking an array and spreading out each element (iterable)
+const tvOutput = (...tv) => {
+    for (let shows of tv) {
+        console.log(shows);
+    }
+    
+}
+const tvShows = ["HIMYM", "Friends", "The Office", "Entourage"];
+console.log(tvShows); //prints array of shows 
+console.log(...tvShows); // prints out string of shows
+console.log(tvOutput(...tvShows)); //prints out each show individually 
+
+//Spread Operator - In Array Literals
+const parents = ["Arif", "Meena"];
+const kids = ["Zamir", "Ziyana"];
+const fullFam = [parents, kids];
+console.log(fullFam); //Array, Array (Seperately)
+const fullFamily = [...parents, ...kids, "Extended Family"]; //spreads each array into this new array
+console.log(fullFamily); // New array with everyone in it 
+//Copy an Array
+const food = ["Chinese", "Japanese", "Mexican", "American", "Italian"];
+const copyFood = food; //Pass by reference value - Pointing to the same place in comp memory
+console.log(copyFood);
+copyFood.push("Hawaiin");
+console.log(food, copyFood); //both have "Hawaiin"
+const newFood = [...food];
+console.log(newFood);
+food.push("Indian");
+console.log(food);
+console.log(newFood); //no "Indian"
 
 
-//object - data structure
+//OBJECT - data structure
 let fname = "Zamir";
 let age = 26;
 
@@ -205,3 +241,28 @@ function findObjectByKey(array, key, value) {
 
 var obj = findObjectByKey(objArray, 'id', 3);
 let objNew = objArray.find(obj => obj.id == 3);
+
+//Spread Operator - Object literals 
+const mainColors = {brightRed: "#e55039", waterfallBlue: "#38ada9"};
+const accentColors = {lightGrey: "#778ca3", swanWhite: "#f7f1e3"};
+const fullPalette = {...mainColors, ...accentColors};
+console.log(fullPalette);
+
+//Add property
+const lion = {hasTail: true, legs: 4};
+const eagle = {canFly: true };
+const hybrid = {name: "Gryphon", ...lion, ...eagle};
+console.log(hybrid);
+
+//Example of making a new array with new object (not changing/mutating original)
+const todos = [
+	{user: "Brick", completed: false, task: "Upload Video"},
+	{user: "Lilith", completed: true, task: "Rob Bank"}
+]
+
+function addTodo(newTodo){
+  return [...todos, {...newTodo, completed: false}]; //creates new array and adds new object (that is passed in) to the end 
+}
+
+const newTodos = addTodo({user: "Zamir", task:"Code all day"});
+console.log(newTodos);
