@@ -84,12 +84,12 @@ console.log(toDoList);
 console.log(urgentTask("buy salami!"));
 console.log(toDoList);
 
-//Array Destructuring 
+//Array Destructuring - goes by index
 let listOfNumbers2 = [5, 8, 1, 2, 89, 69, 420, {
     example: "Object"
 }];
 const alphabet = ["A", "B", "C", "D", "E", "F", "G"];
-const arrayDest = [one,, two, thirdIndex, ...restOfNums] = listOfNumbers2;
+const arrayDest = [one,, two, thirdIndex, ...restOfNums] = listOfNumbers2; //double comma skips an index (8)
 const newList = [...listOfNumbers2, ...alphabet];
 console.log(one); // 5 (i = 0)
 console.log(thirdIndex); // 2 (i = 2)
@@ -217,9 +217,21 @@ let objDest = {
     },
     hobbies: ["snowboarding", "music", "games"]
 }
-const { name, ageTwo, favoriteFood = "Chinese" } = objDest;
-console.log(name);
+const { name: firstName = "John", ageTwo, favoriteFood = "Chinese", address: {street} , ...rest } = objDest;
+console.log(firstName); // Zamir
 console.log(favoriteFood); // default argument - Chinese
+console.log(street); // 123 st W
+console.log(rest); // hobbies array
+
+// function argument destructuring 
+function printName (userName) {
+    console.log(`Hello my name is ${userName.name}`);
+}
+function printNameDestructure ({name, ageTwo, favoriteMove = "The day after Tomorrow"}) {
+    console.log(`Hello my name is ${name} and I am ${ageTwo} years old. My favorite movie is ${favoriteMove}`);
+}
+printName(objDest);
+printNameDestructure(objDest); // using obj argument and destructuring them in the function parameters
 
 //Extra Example
 var objArray = [
@@ -259,10 +271,50 @@ const todos = [
 	{user: "Brick", completed: false, task: "Upload Video"},
 	{user: "Lilith", completed: true, task: "Rob Bank"}
 ]
-
 function addTodo(newTodo){
   return [...todos, {...newTodo, completed: false}]; //creates new array and adds new object (that is passed in) to the end 
 }
-
 const newTodos = addTodo({user: "Zamir", task:"Code all day"});
 console.log(newTodos);
+
+//JSON
+let userJSON = [
+    {
+        "user": "Zamir",
+        "age": 26,
+        "favoriteNumber": 76,
+        "isProgrammer": true,
+        "hobbies": ["Music", "Snowboarding", "Hiking", "Photography", "Traveling"],
+        "friends": [{
+            "name": "Sam", 
+            "favoriteNumber": 69, 
+            "isProgrammer": false, 
+            "friends": [{
+                "user": "Mills",
+                "hobbies": ["Hiking", "Fantasy Basketball", "Photography"]
+            }]
+        }]
+    }, 
+    {
+        "user": "Braedon", 
+        "age": 27, 
+        "favoriteNumber": 420, 
+        "isProgrammer": true
+    }
+]
+console.log(userJSON);
+console.log(userJSON[0].user); //already an object
+userJSON = JSON.stringify(userJSON); // turns into a JSON string
+console.log(userJSON); // string arrray output
+console.log(userJSON[0].age); // undefined
+userJSON = JSON.parse(userJSON);
+console.log(userJSON); // becomes object again
+
+//Looping through objects
+for (let i = 0; i < userJSON.length; i++) {
+    // console.log(i);
+    console.log(userJSON[i].user); // Zamir, Braedon
+}
+for (let key in userJSON) {
+    console.log(userJSON[key].user); // Zamir, Braedon
+}

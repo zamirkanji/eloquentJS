@@ -1,0 +1,24 @@
+[
+    {
+        "user": "Zamir",
+        "age": 26,
+        "favoriteNumber": 76,
+        "isProgrammer": true,
+        "hobbies": ["Music", "Snowboarding", "Hiking", "Photography", "Traveling"],
+        "friends": [{
+            "name": "Sam", 
+            "favoriteNumber": 69, 
+            "isProgrammer": false, 
+            "friends": [{
+                "user": "Mills",
+                "hobbies": ["Hiking", "Fantasy Basketball", "Photography"]
+            }]
+        }]
+    }, 
+    {
+        "user": "Braedon", 
+        "age": 27, 
+        "favoriteNumber": 420, 
+        "isProgrammer": true
+    }
+]
