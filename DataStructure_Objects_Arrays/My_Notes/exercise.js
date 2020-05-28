@@ -12,7 +12,7 @@ function range(a, b, c) {
 	}
 	return array;
 }
-console.log(range(1, 25, 3));
+// console.log(range(1, 25, 3));
 //sum of range of numbers - rangeOf is an array returned from range()
 function sum(rangeOf) {
 	let total = 0;
@@ -21,25 +21,38 @@ function sum(rangeOf) {
 	}
 	return total;
 }
-console.log(sum(range(1, 25, 3)));
+// console.log(sum(range(1, 25, 3)));
 
 // REVERSING AN ARRAY
 function reverseArray (...array) {
     let newReverse = [];
     newReverse.push(array.reverse());
-    console.log(array);
+    // console.log(array);
     return newReverse;
 }
 let reverseFunc = reverseArray("A", "B", "C");
-console.log(reverseFunc);
+// console.log(reverseFunc);
 
+//WITHOUT REVERSE - creates new array
 function reverseArrayNew (array) {
-    
+	let newArray = [];
+	for (const element of array) {
+		newArray.unshift(element);
+	}
+	return newArray;
 }
 console.log(reverseArrayNew(["A", "B", "C"]));
 
+//Modifies same array
+let arrayValue = [1, 2, 3, 4, 5];
 
-
-const reverseArrayInPlace = function (...array) {
-
+const reverseArrayInPlace = (arrayValue) => {
+	const newValue = arrayValue.map(element => {
+		arrayValue.unshift(element);
+	})	
+	return newValue;
 }
+
+
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
