@@ -46,13 +46,44 @@ console.log(reverseArrayNew(["A", "B", "C"]));
 //Modifies same array
 let arrayValue = [1, 2, 3, 4, 5];
 
-const reverseArrayInPlace = (arrayValue) => {
-	const newValue = arrayValue.map(element => {
-		arrayValue.unshift(element);
-	})	
-	return newValue;
+// const reverseArrayInPlace = (arrayValue) => {
+// 	console.log(arrayValue);
+// 	for (let e of arrayValue) {
+// 		console.log(e);
+// 	}
+	
+// }
+
+
+// reverseArrayInPlace(...arrayValue);
+console.log(...arrayValue);
+// console.log(arrayValue);
+
+
+//REST parameter takes all function call arguments  and puts them into an array 
+function example (...restExample) {
+	return restExample;
 }
+let rest = example(1, 3);
+console.log(rest); // [1, 3]
 
+//SPREAD  operator takes already array and uses it as a function call argument and spreads it out as each value 
+function exampleSpread (one, two, three, four = 10) {
+	console.log(one, two, three, four); // 1, 4, 8, 12
+	// return [...spread * 2];
+}
+let spreadArray = [1, 4, 8, 12];
+exampleSpread(...spreadArray);
 
-reverseArrayInPlace(arrayValue);
-console.log(arrayValue);
+//takes array turns into into seperate arguments and then back to array (Rest) and then returns array * 2
+function exampleSpread_Rest (...spread) {
+	console.log(spread);
+	const mapSpread = spread.map(x => {
+		return x * 2;
+	})
+	// console.log(mapSpread);
+	return mapSpread;
+}
+let spreadArray_Rest = [1, 4, 8, 12];
+const doubleValue = exampleSpread_Rest(...spreadArray_Rest);
+console.log(doubleValue);
