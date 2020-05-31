@@ -77,5 +77,16 @@ let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
 console.log(rtlScripts);
 console.log(rtlScripts.map(s => s.name)); // returns the "name" property of all the filtered objects with "direction" property of "rtl"
 
-//REDUCE
-arrayLetters.reduce();
+//REDUCE - builds a value by repeatedly taking a single element from the array and combining it with the current value.
+// When summing numbers, you’d start with the number zero and, for each element, add that to the sum.
+function reduce(array, combine, start) {
+    let current = start;
+    for (let element of array) {
+      current = combine(current, element);
+    }
+    return current;
+  }
+  
+  console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+  // → 10
+  console.log([1, 2, 3, 4].reduce((a, b) => a + b));
