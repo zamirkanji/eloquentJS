@@ -53,11 +53,8 @@ let arrayValue = [1, 2, 3, 4, 5];
 // 	}
 	
 // }
-
-
-// reverseArrayInPlace(...arrayValue);
-console.log(...arrayValue);
-// console.log(arrayValue);
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
 
 
 //REST parameter takes all function call arguments  and puts them into an array 
