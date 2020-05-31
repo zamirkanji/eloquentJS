@@ -78,3 +78,4 @@ console.log(rtlScripts);
 console.log(rtlScripts.map(s => s.name)); // returns the "name" property of all the filtered objects with "direction" property of "rtl"
 
 //REDUCE
+arrayLetters.reduce();
