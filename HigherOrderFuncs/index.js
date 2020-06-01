@@ -106,6 +106,21 @@ let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
 console.log(rtlScripts);
 console.log(rtlScripts.map(s => s.name)); // returns the "name" property of all the filtered objects with "direction" property of "rtl"
 
+//MAP - higher order example example
+let numbersMap = [4, 8, 16, 32];
+console.log(numbersMap.map(x => {
+    return x * 2;
+}))
+// ?
+function mapMultiplier(arr) {
+    return (mult) => { 
+            arr.map(a => {
+                return a * mult;
+        })
+    }
+}
+console.log(mapMultiplier(numbersMap));
+
 //REDUCE - builds a value by repeatedly taking a single element from the array and combining it with the current value.
 // When summing numbers, you’d start with the number zero and, for each element, add that to the sum.
 function reduce(array, combine, start) {
@@ -120,7 +135,7 @@ function reduce(array, combine, start) {
 // If your array contains at least one element, you are allowed to leave off the start argument. 
 // The method will take the first element of the array as its start value and start reducing at the second element.
 let numbers = [1, 2, 3, 4];
-console.log(numbers.reduce((a, b) => a + b));
+console.log(numbers.reduce((a, b) => a + b)); // adds up all numbers in "numbers" array
 
 console.log(numbers.reduce((a, b) => {
     return a * b;
