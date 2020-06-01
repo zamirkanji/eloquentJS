@@ -17,6 +17,35 @@ console.log(labels);
 
 //Higher-Order Functions - Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions. 
 //Abstract over actions, not just values
+function sing (callback) {
+    console.log("la la la la");
+    if (callback instanceof Function) {
+      callback();
+    }
+}
+function meow() {
+    console.log("meow meow");
+}
+sing();
+sing(meow);
+// pass in anonymous function 
+sing(function() {console.log("meow meow");});
+
+// function that returns another function
+function multiplier(factor) {
+    return function (x) {
+       return x * factor; //factor is able to be used because of Closure
+    }
+} 
+//arrow function 
+const arrowMultiplier = (factor) => {
+    return x => x * factor;
+}
+let doubler = multiplier(2); //doubler is now a function that returns x * 2
+let tripler = arrowMultiplier(3);
+console.log(doubler);
+console.log(doubler(4)); // 8
+console.log(tripler(3)); // 9
 
 //Functions that create new functions
 function greaterThan(n) {
@@ -86,7 +115,23 @@ function reduce(array, combine, start) {
     }
     return current;
   }
-  
-  console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
-  // → 10
-  console.log([1, 2, 3, 4].reduce((a, b) => a + b));
+  console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));  // → 10
+ 
+// If your array contains at least one element, you are allowed to leave off the start argument. 
+// The method will take the first element of the array as its start value and start reducing at the second element.
+let numbers = [1, 2, 3, 4];
+console.log(numbers.reduce((a, b) => a + b));
+
+console.log(numbers.reduce((a, b) => {
+    return a * b;
+}));
+
+//Find the script with the most Characters
+function characterCount (script) {
+    return script.ranges.reduce((count, [from, to]) => {
+        return count + (to - from);
+    }, 0);
+}
+console.log(SCRIPTS.reduce((a, b) => {
+    return characterCount(a) < characterCount(b) ? b : a;
+}));
