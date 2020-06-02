@@ -42,11 +42,27 @@ const companiesInEightys = companies.filter(company => {
     // }
     return company.start >= 1980 && company.start < 1990;
 })
-console.log(companiesInEightys);
+console.log(companiesInEightys); //array
 // get 80s retail companies
 const retailEightys = companiesInEightys.filter(c => c.category === "Retail");
 console.log(retailEightys);
 //map
+const nameOfCompanies = companies.map(e => e.name);
+console.log(nameOfCompanies);
+for (let name of nameOfCompanies) {
+    console.log(name);
+}
+//time all ages by 2
+function doubler(n) {
+    return ages.map(a => {
+        return a * n;
+    });
+}
+let dub = doubler(2);
+console.log(dub);
+//filter out ages over 100
+const hundred = dub.filter(age => age >= 100);
+console.log(hundred);
 //sort
 //reduce
 //for/of
