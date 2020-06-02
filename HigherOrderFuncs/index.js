@@ -17,10 +17,10 @@ console.log(labels);
 
 //Higher-Order Functions - Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions. 
 //Abstract over actions, not just values
-function sing (callback) {
+function sing(callback) {
     console.log("la la la la");
     if (callback instanceof Function) {
-      callback();
+        callback();
     }
 }
 function meow() {
@@ -29,14 +29,15 @@ function meow() {
 sing();
 sing(meow);
 // pass in anonymous function 
-sing(function() {console.log("meow meow");});
+sing(function () { console.log("meow meow"); });
 
 // function that returns another function
 function multiplier(factor) {
     return function (x) {
-       return x * factor; //factor is able to be used because of Closure
+        return x * factor; //factor is able to be used because of Closure
     }
-} 
+}
+
 //arrow function 
 const arrowMultiplier = (factor) => {
     return x => x * factor;
@@ -49,7 +50,9 @@ console.log(tripler(3)); // 9
 
 //Functions that create new functions
 function greaterThan(n) {
-    return m => m > n;
+    return function (m) {
+        return m > n;
+    }
 }
 let greaterThan10 = greaterThan(10);
 console.log(greaterThan10(11)); // true
@@ -58,7 +61,7 @@ console.log(greaterThan10(11)); // true
 function noisy(f) {
     //anon function that takes args with f and returns it - and runs everytime noisy() is called 
     return function (...args) { //rest parameter - turns args into an array
-        console.log("Calling with", args); 
+        console.log("Calling with", args);
         let result = f(...args);
         console.log("Called with", args, "Returned", result);
         return result;
@@ -67,7 +70,7 @@ function noisy(f) {
 noisy(Math.min)(3, 2, 1);
 
 //Functions that provide new types of control flow
-function unless (test, then) {
+function unless(test, then) {
     if (!test) then();
 }
 repeat(3, n => {
@@ -83,21 +86,28 @@ arrayLetters.forEach(l => {
 }) // A B
 
 //Script Data Set - higher order func data processing
-//Filtering Arrays
-// function filter (array, test) {
-//     let passed = [];
-//     for (let element of array) {
-//         if (test(element)) { //if SCRIPTS.living = true, then push that to passed array
-//             passed.push(element);
-//         }
-//     }
-//     return passed;
-// }
-// console.log(filter(SCRIPTS, script => script.living));
 
-// console.log(SCRIPTS.filter(s => s.direction == "ttb"));
+// FILTER - 
+function filter(array, test) {
+    let passed = [];
+    for (let element of array) {
+        if (test(element)) { //if SCRIPTS.living = true, then push that to passed array
+            passed.push(element);
+        }
+    }
+    return passed;
+}
+console.log(filter(SCRIPTS, script => script.living)); // all scripts with the "living" property that is true
+
 console.log(SCRIPTS.filter(function (s) {
     return s.direction == "ttb";
+}))
+console.log(SCRIPTS.filter(s => s.direction == "ttb")); // arrow
+
+//FILTER - example
+let filterArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(filterArray.filter(f => {
+    return f >= 5;
 }))
 
 //MAP - The map method transforms an array by applying a function to all of its elements and building a new array from the returned values.
@@ -111,11 +121,12 @@ let numbersMap = [4, 8, 16, 32];
 console.log(numbersMap.map(x => {
     return x * 2;
 }))
-// ?
+
+// MAP - example
 function mapMultiplier(arr) {
-    return (mult) => { 
-            arr.map(a => {
-                return a * mult;
+    return (mult) => {
+        arr.map(a => {
+            return a * mult;
         })
     }
 }
@@ -126,12 +137,12 @@ console.log(mapMultiplier(numbersMap));
 function reduce(array, combine, start) {
     let current = start;
     for (let element of array) {
-      current = combine(current, element);
+        current = combine(current, element);
     }
     return current;
-  }
-  console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));  // → 10
- 
+}
+console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));  // → 10
+
 // If your array contains at least one element, you are allowed to leave off the start argument. 
 // The method will take the first element of the array as its start value and start reducing at the second element.
 let numbers = [1, 2, 3, 4];
@@ -142,7 +153,7 @@ console.log(numbers.reduce((a, b) => {
 }));
 
 //Find the script with the most Characters
-function characterCount (script) {
+function characterCount(script) {
     return script.ranges.reduce((count, [from, to]) => {
         return count + (to - from);
     }, 0);
