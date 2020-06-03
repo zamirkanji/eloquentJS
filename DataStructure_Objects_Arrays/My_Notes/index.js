@@ -156,8 +156,15 @@ const objectExample = {
     }
 }
 
+// .brand and ["brand"] are the same - accessing the object value whose key is 'brand'
 console.log(objectExample.brand); //Mercedes
 console.log(objectExample["brand"]); //Mercedes
+
+// [brand] is different - accesses the object value whose key matches a brand variable.
+console.log(objectExample[brand]);
+console.log(objectExample[model]);
+console.log(objectExample[age]);
+	    
 console.log(objectExample[2]); //John
 console.log(objectExample["Zamir Kanji"]); //Zamir
 console.log(objectExample.age); //old 
