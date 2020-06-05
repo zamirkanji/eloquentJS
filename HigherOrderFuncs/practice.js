@@ -16,11 +16,12 @@ const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
 for (let i = 0; i < companies.length; i++) {
     console.log(companies[i]);
 }
-//forEach
+//FOREACH
 companies.forEach(function (company) {
     console.log("forEach method - Company Category: ", company.category);
 })
-//filter
+
+//FILTER
 //for loop 
 let ofAge = [];
 for (let a = 0; a < ages.length; a++) {
@@ -46,7 +47,8 @@ console.log(companiesInEightys); //array
 // get 80s retail companies
 const retailEightys = companiesInEightys.filter(c => c.category === "Retail");
 console.log(retailEightys);
-//map
+
+//MAP
 const nameOfCompanies = companies.map(e => e.name);
 console.log(nameOfCompanies);
 for (let name of nameOfCompanies) {
@@ -63,6 +65,9 @@ console.log(dub);
 //filter out ages over 100
 const hundred = dub.filter(age => age >= 100);
 console.log(hundred);
+
 //sort
+
 //reduce
+
 //for/of
