@@ -16,11 +16,12 @@ const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
 for (let i = 0; i < companies.length; i++) {
     console.log(companies[i]);
 }
-//forEach
+//FOREACH
 companies.forEach(function (company) {
     console.log("forEach method - Company Category: ", company.category);
 })
-//filter
+
+//FILTER
 //for loop 
 let ofAge = [];
 for (let a = 0; a < ages.length; a++) {
@@ -46,6 +47,7 @@ console.log(companiesInEightys); //array
 // get 80s retail companies
 const retailEightys = companiesInEightys.filter(c => c.category === "Retail");
 console.log(retailEightys);
+<<<<<<< HEAD
 // get companies that lasted 10 years or more
 const tenYears = companies.filter(x => x.end - x.start > 10);
 console.log(tenYears);
@@ -54,6 +56,12 @@ const nameOfCompanies = companies.map(e => {
     return `${e.name} [${e.start} - ${e.end}]`;
 });
 console.log(nameOfCompanies); // all company names
+=======
+
+//MAP
+const nameOfCompanies = companies.map(e => e.name);
+console.log(nameOfCompanies);
+>>>>>>> c94473ddd5a9863f60d12091cea64ac09bcefcdc
 for (let name of nameOfCompanies) {
     console.log(name);
 }
@@ -68,6 +76,7 @@ console.log(dub);
 //filter out ages over 100
 const hundred = dub.filter(age => age >= 100);
 console.log(hundred);
+<<<<<<< HEAD
 //square root of ages using function declaraton
 function ageSqrt() {
     const sqaureRt = ages.map(age => {
@@ -95,5 +104,11 @@ console.log(sortedCompanies);
 
 const sortedCompaniesShort = companies.sort((a, b) => (a.start > b.start ? 1 : -1));
 console.log(sortedCompaniesShort);
+=======
+
+//sort
+
+>>>>>>> c94473ddd5a9863f60d12091cea64ac09bcefcdc
 //reduce
+
 //for/of
