@@ -27,7 +27,7 @@ function meow() {
     console.log("meow meow");
 }
 sing();
-sing(meow);
+sing(meow); //using the return of function meow as a callback to function sing
 // pass in anonymous function 
 sing(function () { console.log("meow meow"); });
 
