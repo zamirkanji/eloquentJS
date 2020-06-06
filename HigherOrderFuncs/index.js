@@ -164,23 +164,23 @@ console.log(SCRIPTS.reduce((a, b) => {
 
 //Find the avg year of origin for living and dead scripts in SCRIPTS
 function average(array) {
-  return array.reduce((a, b) => a + b) / array.length;
+    return array.reduce((a, b) => a + b) / array.length;
 }
 
 console.log(Math.round(average(
-  SCRIPTS.filter(s => s.living).map(s => s.year))));
+    SCRIPTS.filter(s => s.living).map(s => s.year))));
 // → 1165
 console.log(Math.round(average(
-  SCRIPTS.filter(s => !s.living).map(s => s.year))));
+    SCRIPTS.filter(s => !s.living).map(s => s.year))));
 // → 204
 
 //Without higher order - as one big loop 
 let total = 0, count = 0;
 for (let script of SCRIPTS) {
-  if (script.living) {
-    total += script.year;
-    count ++;
-  }
+    if (script.living) {
+        total += script.year;
+        count++;
+    }
 }
 console.log(Math.round(total / count));
 // → 1165
