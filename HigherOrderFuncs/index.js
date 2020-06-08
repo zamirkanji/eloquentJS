@@ -67,7 +67,7 @@ function noisy(f) {
         return result;
     }
 }
-noisy(Math.min)(3, 2, 1);
+noisy(Math.min)(3, 2, 1); // 1 - Basically saying Math.min([3, 2, 1])
 
 //Functions that provide new types of control flow
 function unless(test, then) {
