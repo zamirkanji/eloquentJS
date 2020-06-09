@@ -60,12 +60,12 @@ for (let name of nameOfCompanies) {
     console.log(name);
 }
 //time all ages by 2
-function doubler(n) {
+function doublerPrac(n) {
     return ages.map(a => {
         return a * n;
     });
 }
-let dub = doubler(2);
+let dub = doublerPrac(2);
 console.log(dub);
 //filter out ages over 100
 const hundred = dub.filter(age => age >= 100);
@@ -85,7 +85,8 @@ const agesMult = ages
     .map(age => Math.round(age / 3)); //divide by 3 and rounded
 console.log(agesMult);
 
-//sort
+//SORT
+//sort companies by start year
 const sortedCompanies = companies.sort(function (comp1, comp2) {
     if (comp1.start > comp2.start) {
         return 1;
@@ -94,9 +95,46 @@ const sortedCompanies = companies.sort(function (comp1, comp2) {
     }
 })
 console.log(sortedCompanies);
-
+//sort companies by start year (ES6 version)
 const sortedCompaniesShort = companies.sort((a, b) => (a.start > b.start ? 1 : -1));
 console.log(sortedCompaniesShort);
-//reduce
+//sort ages
+// const sortAges = ages.sort((a, b) => a - b);
+// console.log(sortAges);
 
-//for/of
+//REDUCE
+//add ages together using FOR OF loop
+function addAgesForLoop() {
+    let result = 0;
+        for (let age of ages) {
+            // console.log(age);
+            result += age;
+        }
+    return result;
+}
+console.log(addAgesForLoop());
+//add ages together using reduce
+const reduceAges = ages.reduce(function (acc, age) {
+    return acc + age;
+}, 0) //zero is second parameter for anon func
+console.log(reduceAges);
+//add ages together using reduce with Arrow func
+const reduceAgesArrow = ages.reduce((acc, age) => acc + age, 0);
+console.log(reduceAgesArrow);
+//get total years for all companies
+const totalYears = companies.reduce(function (acc, company) {
+    return acc + (company.end - company.start);
+}, 0);
+console.log(totalYears);
+//get total years for all companies Arrow Func
+const totalYearsShort = companies.reduce((acc, c) => acc + (c.end - c.start), 0);
+console.log(totalYearsShort);
+
+//COMBINE METHODS
+const combined = ages
+    .map(age => age * 2) // times all ages by 2
+    .filter(age => age >= 40) // filter ages 40 and over
+    .sort((a, b) => a - b) // sort them by lowest to highest
+    .reduce((a, b) => a + b, 0); // add all of them together
+console.log(combined);
+//FOR/OF

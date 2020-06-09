@@ -168,7 +168,7 @@ function average(array) {
 }
 
 console.log(Math.round(average(
-    SCRIPTS.filter(s => s.living).map(s => s.year))));
+    SCRIPTS.filter(s => s.living).map(s => s.year)))); //returns all living scripts and their years and uses that as argument to average()
 // → 1165
 console.log(Math.round(average(
     SCRIPTS.filter(s => !s.living).map(s => s.year))));
@@ -184,3 +184,50 @@ for (let script of SCRIPTS) {
 }
 console.log(Math.round(total / count));
 // → 1165
+
+//SOME - tests whether at least one element in the array passes the test implemented by the provided function - returns boolean
+const arrayEven = [33, 4, 7, 27, 91, 433];
+const even = (e) => e % 2 === 0;
+console.log(arrayEven.some(even)); //true (one of the elements in the array is even)
+
+const arrayOdd = [1, 3, 5, 7];
+console.log(arrayOdd.some(function (arr) {
+    return arr % 2 === 0;
+})); // false (no element in the array is even)
+
+//FIND INDEX - shows position of first element in array that passes the test implemented by the provided function
+const arrayFindIndex = [4, 8, 12, 17, 19];
+const odd = (element) => element % 2 === 1;
+console.log(arrayFindIndex.findIndex(odd)); //3 (17)
+
+//INDEX OF 
+console.log(arrayFindIndex.indexOf(12)); //2 
+
+//STRINGS AND CHARACTER CODES -  
+// str.charCodeAt(index) - good for UTF-8  (0 - 65535 or 0xFFFF)
+// str.codePointAt(index) - better for UTF-16 (0 - 1114111 or 0x10FFFF)
+let emojis = "😆😀😂🍔🔥❤"; //each emoji is 2 characters
+let str = "ab🔥C"; // 5 (fire emoji is 2)
+
+console.log(str.length); //5
+console.log(
+  str.charAt(0),
+  str.charAt(1),
+  str.charAt(2),
+  str.charAt(3),
+  str.charAt(4)
+);
+
+let cs = str.charCodeAt(0);
+console.log(cs, cs.toString(16));
+
+let cca = emojis.charCodeAt(0);
+let cpa = emojis.codePointAt(0);
+console.log(cca, cpa, cca.toString(16), cpa.toString(16));
+
+//go back from code to character
+let char3 = String.fromCharCode(cs);
+console.log(char3);
+let char1 = String.fromCharCode(cca);
+let char2 = String.fromCodePoint(cpa);
+console.log(char1, char2);
