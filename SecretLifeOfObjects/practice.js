@@ -51,7 +51,7 @@ let firstObject = {
         return combine;
     }, 
 //PROTOTYPE
-    prototype: {
+    __proto__: {
         fname: "Zamir", 
         lname: "Kanji",
         protoMethod: (x) => {
@@ -73,7 +73,7 @@ console.log(firstObject.arrayOperator(5, 10, 20));
 button.addEventListener("click", function (e) {
     // promptHandler();
     console.log(e);
-    const prototypeArray = firstObject.prototype.protoMethod(2)(promptHandler());
+    const prototypeArray = firstObject.__proto__.protoMethod(2)(promptHandler());
     // let parse = String(prototypeArray);
     para.textContent = prototypeArray;
 });
