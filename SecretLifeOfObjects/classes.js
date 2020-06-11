@@ -1,25 +1,4 @@
 //ES6 CLASS NOTATION
-//Rabbit Example
-class Rabbit {
-  constructor(type) {
-    this.type = type;
-    this.methodExample = function () {
-      console.log("Normal Method that is assigned to every object created with this... not in prototype");
-    }
-  }
-  protoMethod(line) {
-    console.log(`The ${this.type} rabbit says '${line}'`);
-  }
-}
-
-let killerRabbit = new Rabbit("killer");
-let blackRabbit = new Rabbit("black");
-
-blackRabbit.methodExample();
-killerRabbit.protoMethod("I am going to kill you!"); //speak() is in prototype
-console.log(killerRabbit);
-console.log(blackRabbit);
-
 
 //Wizard/Knight Example
 class Wizard {
