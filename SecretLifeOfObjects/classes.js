@@ -35,7 +35,7 @@ class Rabbit {
           console.log("Normal Method that is assigned to every object created with this... not in prototype");
       }
     }
-    speak(line) {
+    protoMethod(line) {
       console.log(`The ${this.type} rabbit says '${line}'`);
     }
 }
@@ -44,5 +44,7 @@ let killerRabbit = new Rabbit("killer");
 let blackRabbit = new Rabbit("black");
 
 blackRabbit.methodExample();
-killerRabbit.speak("I am going to kill you!"); //speak() is in prototype
+killerRabbit.protoMethod("I am going to kill you!"); //speak() is in prototype
+console.log(killerRabbit);
+console.log(blackRabbit);
 
