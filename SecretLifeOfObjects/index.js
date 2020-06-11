@@ -100,3 +100,31 @@ Rabbit.prototype.speak = function (line) {
 };
 
 let weirdRabbit = new Rabbit("weird");
+
+//Rabbit Example - ES6
+class Rabbit {
+  constructor(type) {
+    this.type = type;
+    this.methodExample = function () {
+      console.log("Normal Method that is assigned to every object created with this... not in prototype");
+    }
+  }
+  protoMethod(line) {
+    console.log(`The ${this.type} rabbit says '${line}'`);
+  }
+}
+
+let killerRabbit = new Rabbit("killer");
+let blackRabbit = new Rabbit("black");
+
+blackRabbit.methodExample();
+killerRabbit.protoMethod("I am going to kill you!"); //speak() is in prototype
+console.log(killerRabbit);
+console.log(blackRabbit);
+
+Rabbit.prototype.teeth = "small";
+console.log(killerRabbit.teeth); // → small
+killerRabbit.teeth = "long, sharp, and bloody";
+console.log(killerRabbit.teeth); // → long, sharp, and bloody
+console.log(blackRabbit.teeth); // → small
+console.log(Rabbit.prototype.teeth); // → small

@@ -1,6 +1,5 @@
-
-
 //ES6 CLASS NOTATION
+//Rabbit Example
 class Rabbit {
   constructor(type) {
     this.type = type;
@@ -22,7 +21,7 @@ console.log(killerRabbit);
 console.log(blackRabbit);
 
 
-
+//Wizard/Knight Example
 class Wizard {
   constructor(name, race, ultimate, type) {
     this.name = name;
@@ -34,6 +33,11 @@ class Wizard {
       water: "Water Tornado"
     };
     this.type = type;
+
+    this.strength = {
+      extraBuff: 5,
+      extraStrength: 2.3
+    }
     this.summary = function () {
       console.log(`My name is ${this.name} and I am a ${this.race}... My type is ${this.type} and my ultimate is ${this.ultimate}`);
     }
@@ -53,6 +57,10 @@ class Knight extends Wizard {
     super(name, race, ultimate, type);
     this.weapon = weapon;
     this.height = height;
+    this.strength = {
+      extraBuff: 10,
+      extraStrength: 4.5
+    }
   }
 }
 
@@ -65,3 +73,28 @@ wiz1.outputRace();
 
 console.log(knight1);
 knight1.outputRace(); //both wiz1 and knight1 have this prop - both point at the same prototype
+
+
+//Rectangle/Area Example
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+
+//Prototype Methods
+  // Getter
+  get area() {
+    return this.calcArea();
+  }
+  // Method
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+const square = new Rectangle(10, 10);
+
+console.log(square.area); // 100
+console.log(square);
+

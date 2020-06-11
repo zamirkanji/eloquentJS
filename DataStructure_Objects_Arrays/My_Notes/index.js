@@ -89,14 +89,14 @@ let listOfNumbers2 = [5, 8, 1, 2, 89, 69, 420, {
     example: "Object"
 }];
 const alphabet = ["A", "B", "C", "D", "E", "F", "G"];
-const arrayDest = [one,, two, thirdIndex, ...restOfNums] = listOfNumbers2; //double comma skips an index (8)
+const arrayDest = [one, , two, thirdIndex, ...restOfNums] = listOfNumbers2; //double comma skips an index (8)
 const newList = [...listOfNumbers2, ...alphabet];
 console.log(one); // 5 (i = 0)
 console.log(thirdIndex); // 2 (i = 2)
 console.log(restOfNums); // 89, 69, 420 and obj
 
 //rest parameter (takes in any number of arguments - puts them into an array)
-function max (...numbers) {
+function max(...numbers) {
     let result = -Infinity;
     for (let number of numbers) {
         if (number > result) {
@@ -112,7 +112,7 @@ const tvOutput = (...tv) => {
     for (let shows of tv) {
         console.log(shows);
     }
-    
+
 }
 const tvShows = ["HIMYM", "Friends", "The Office", "Entourage"];
 console.log(tvShows); //prints array of shows 
@@ -164,7 +164,7 @@ console.log(objectExample["brand"]); //Mercedes
 console.log(objectExample[brand]);
 console.log(objectExample[model]);
 console.log(objectExample[age]);
-	    
+
 console.log(objectExample[2]); //John
 console.log(objectExample["Zamir Kanji"]); //Zamir
 console.log(objectExample.age); //old 
@@ -217,24 +217,24 @@ console.log(sequence); // → [1, 2, 3, 4]
 //Object Destructuring 
 let objDest = {
     name: "Zamir",
-    ageTwo: 26, 
+    ageTwo: 26,
     address: {
         street: "123 st W",
         city: "Seattle"
     },
     hobbies: ["snowboarding", "music", "games"]
 }
-const { name: firstName = "John", ageTwo, favoriteFood = "Chinese", address: {street} , ...rest } = objDest;
+const { name: firstName = "John", ageTwo, favoriteFood = "Chinese", address: { street }, ...rest } = objDest;
 console.log(firstName); // Zamir
 console.log(favoriteFood); // default argument - Chinese
 console.log(street); // 123 st W
 console.log(rest); // hobbies array
 
 // function argument destructuring 
-function printName (userName) {
+function printName(userName) {
     console.log(`Hello my name is ${userName.name}`);
 }
-function printNameDestructure ({name, ageTwo, favoriteMove = "The day after Tomorrow"}) {
+function printNameDestructure({ name, ageTwo, favoriteMove = "The day after Tomorrow" }) {
     console.log(`Hello my name is ${name} and I am ${ageTwo} years old. My favorite movie is ${favoriteMove}`);
 }
 printName(objDest);
@@ -262,26 +262,26 @@ var obj = findObjectByKey(objArray, 'id', 3);
 let objNew = objArray.find(obj => obj.id == 3);
 
 //Spread Operator - Object literals 
-const mainColors = {brightRed: "#e55039", waterfallBlue: "#38ada9"};
-const accentColors = {lightGrey: "#778ca3", swanWhite: "#f7f1e3"};
-const fullPalette = {...mainColors, ...accentColors};
+const mainColors = { brightRed: "#e55039", waterfallBlue: "#38ada9" };
+const accentColors = { lightGrey: "#778ca3", swanWhite: "#f7f1e3" };
+const fullPalette = { ...mainColors, ...accentColors };
 console.log(fullPalette);
 
 //Add property
-const lion = {hasTail: true, legs: 4};
-const eagle = {canFly: true };
-const hybrid = {name: "Gryphon", ...lion, ...eagle};
+const lion = { hasTail: true, legs: 4 };
+const eagle = { canFly: true };
+const hybrid = { name: "Gryphon", ...lion, ...eagle };
 console.log(hybrid);
 
 //Example of making a new array with new object (not changing/mutating original)
 const todos = [
-	{user: "Brick", completed: false, task: "Upload Video"},
-	{user: "Lilith", completed: true, task: "Rob Bank"}
+    { user: "Brick", completed: false, task: "Upload Video" },
+    { user: "Lilith", completed: true, task: "Rob Bank" }
 ]
-function addTodo(newTodo){
-  return [...todos, {...newTodo, completed: false}]; //creates new array and adds new object (that is passed in) to the end 
+function addTodo(newTodo) {
+    return [...todos, { ...newTodo, completed: false }]; //creates new array and adds new object (that is passed in) to the end 
 }
-const newTodos = addTodo({user: "Zamir", task:"Code all day"});
+const newTodos = addTodo({ user: "Zamir", task: "Code all day" });
 console.log(newTodos);
 
 //JSON
@@ -293,19 +293,19 @@ let userJSON = [
         "isProgrammer": true,
         "hobbies": ["Music", "Snowboarding", "Hiking", "Photography", "Traveling"],
         "friends": [{
-            "name": "Sam", 
-            "favoriteNumber": 69, 
-            "isProgrammer": false, 
+            "name": "Sam",
+            "favoriteNumber": 69,
+            "isProgrammer": false,
             "friends": [{
                 "user": "Mills",
                 "hobbies": ["Hiking", "Fantasy Basketball", "Photography"]
             }]
         }]
-    }, 
+    },
     {
-        "user": "Braedon", 
-        "age": 27, 
-        "favoriteNumber": 420, 
+        "user": "Braedon",
+        "age": 27,
+        "favoriteNumber": 420,
         "isProgrammer": true
     }
 ]
@@ -325,3 +325,27 @@ for (let i = 0; i < userJSON.length; i++) {
 for (let key in userJSON) {
     console.log(userJSON[key].user); // Zamir, Braedon
 }
+
+//LOOP OVER OBJECTS
+let objIn = {
+    one: 1,
+    two: 2,
+    five: 5.8
+}
+
+//for in
+let arr = [];
+for (let property in objIn) {
+    arr.push(property);
+}
+console.log(arr);
+
+//keys
+const keys = Object.keys(objIn);
+console.log(keys);
+
+//values
+const values = Object.values(objIn);
+console.log(values);
+const total = values.reduce((acc, b) => acc + b, 0);
+console.log(total);
