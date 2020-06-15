@@ -3,7 +3,7 @@ const para = document.getElementById("arrayOutput");
 
 function promptHandler() {
     let arrayPrompt = prompt("Please enter your Numbers (Seperated by commas)").split(",");
-        arrayPrompt = arrayPrompt.map(Number);
+    arrayPrompt = arrayPrompt.map(Number);
     if (arrayPrompt.length === 0 || arrayPrompt === 0) {
         return [1, 2, 3];
     }
@@ -13,10 +13,10 @@ function promptHandler() {
 
 let firstObject = {
     firstArray: ["B", "Z", 69, "k", 35,
-            {
-                type: "Object", 
-                onlyNums: [5, 10, 20]
-            },
+        {
+            type: "Object",
+            onlyNums: [5, 10, 20]
+        },
         420
     ],
     anotherObject: {
@@ -24,11 +24,11 @@ let firstObject = {
         anotherFunc: function () {
             return this.anotherArray.map(x => {
                 let randomNumbers = (Math.random() * 10);
-                    randomNumbers == 0 ? 1 : randomNumbers;
+                randomNumbers == 0 ? 1 : randomNumbers;
                 return Math.round(x * randomNumbers);
             });
         }
-    }, 
+    },
     firstFunction: function () {
         // return this.firstArray.filter(element => element !== (typeof "number"));
         let arrayWithoutNum = [];
@@ -37,22 +37,22 @@ let firstObject = {
             if (typeof el !== "number") {
                 arrayWithoutNum.push(el);
             } else {
-                arrayWithNum.push(el);    
+                arrayWithNum.push(el);
             }
         }
         console.log(arrayWithNum);
-            // arrayWithNum.length >= 2 ? this.prototype.protoMethod(arrayWithNum) : arrayWithoutNum;
+        // arrayWithNum.length >= 2 ? this.prototype.protoMethod(arrayWithNum) : arrayWithoutNum;
         return arrayWithoutNum;
     },
     arrayOperator: function (...array) {
-        const combine = array 
+        const combine = array
             .map(x => x * 2)
             .reduce((acc, el) => acc + el, 0);
         return combine;
-    }, 
-//PROTOTYPE
+    },
+    //PROTOTYPE
     __proto__: {
-        fname: "Zamir", 
+        fname: "Zamir",
         lname: "Kanji",
         protoMethod: (x) => {
             return function (arr) {
@@ -77,3 +77,5 @@ button.addEventListener("click", function (e) {
     // let parse = String(prototypeArray);
     para.textContent = prototypeArray;
 });
+
+
