@@ -81,19 +81,19 @@ knight1.outputRace(); //both wiz1 and knight1 have this prop - both point at the
 //DCODE CLASSES Follow Along 
 //Class -> Structure of Object being created
 //Instance Properties: what they have
-    // - name
-    // - age
-    // - height
+// - name
+// - age
+// - height
 //Instance Method: what they do (use instance properties to acheive their result)
-    // - talk
-    // - run
-    // - jump
+// - talk
+// - run
+// - jump
 
 class Rectangle {
   //setup your object
-  constructor (_width, _height, _color = "blue") {
+  constructor(_width, _height, _color = "blue") {
     console.log("The Rectangle is being Created");
-  //"this" refers to the object being created by Rectangle class
+    //"this" refers to the object being created by Rectangle class
     // this.width = 5;
     // this.height = 10;
     // this.color = "blue";
@@ -125,39 +125,159 @@ class Square {
     this.height = _width;
     this.numberOfRequestsForArea = 0;
   }
-//making a function a property 
+  //making a function a property - get the area of each object
   get area() {
     this.numberOfRequestsForArea++; //everytime we request a call to get area, it will go up 1
     return this.width * this.height;
   }
-//can change the area() func property value
-  set area (area) {
+  //can change the area() func property value - passed in the area parameter - value can be set to something else
+  set area(area) {
     this.width = Math.sqrt(area);
     this.height = this.width;
-  } 
-    
-    get add() {
-      return this.plus();
-    }
+  }
 
-    plus() {
-      return this.width + this.height;
-    }
+  get add() {
+    let five = 5;
+    return this.plus() + 5;
+  }
+
+  plus() {
+    return this.width + this.height;
+  }
 }
 
 
 let square1 = new Square(4);
 console.log(square1);
-console.log(square1.area);
 
-square1.area = 25;
+console.log(square1.area);
+square1.area = 25; //used as a property
 // console.log(square1.width, square1.height);
 console.log(square1.area);
+
 console.log(square1.area);
 console.log(square1.area);
 console.log(square1.numberOfRequestsForArea);
 
 console.log(square1.add);
+console.log(square1.area + square1.add);
+
+//Static Method - method which is defined on class but not part of the new object that is created
+class SquareStatic {
+  constructor(_width) {
+    this.width = _width;
+    this.height = _width;
+  }
+
+  static equals(a, b) {
+    return a.width * a.height === b.width * b.height ? true : false;
+  }
+
+  static isValidDimensions(width, height) {
+    return width === height ? true : false;
+  }
+}
+
+let square2 = new SquareStatic(8);
+let square3 = new SquareStatic(10);
+// console.log(square2);
+console.log(SquareStatic.equals(square2, square3)); //false
+console.log(SquareStatic.isValidDimensions(6, 6)); //true
+
+//Inheritance - Extends - creates child class using parent (general) class - takes its features and adds to it
+class Person {
+  constructor(_name, _age) {
+    this.name = _name;
+    this.age = _age;
+  }
+
+  describe() {
+    console.log(`I am ${this.name} and I am ${this.age} years old`);
+  }
+}
+
+class Programmer extends Person {
+  constructor(_name, _age, _yearsOfExperience) {
+    super(_name, _age);
+
+    //custom behavior of "Programmer"
+    this.yearsOE = _yearsOfExperience;
+  }
+
+  code() {
+    console.log(`${this.name} is coding`); //only programmers can use this method - but all programmers can use Person methods
+  }
+}
+
+let person1 = new Person("Jeff", 45);
+let programmer1 = new Programmer("Dom", 56, 12);
+console.log(person1, programmer1);
+programmer1.code();
+programmer1.describe();
+
+//using Programmer to create new Objects inside an array
+const programmers = [
+  new Programmer("Dom", 56, 12),
+  new Programmer("Jeff", 24, 4),
+  new Programmer("Zamir", 26, .5)
+]
+
+console.log(programmers);
+
+function developSoftware(programmers) {
+  //Develop software
+  for (let p of programmers) {
+    p.code();
+  }
+}
+developSoftware(programmers);
+
+
+function outputAge(programmers) {
+  let agesAll = [];
+  for (let obj of programmers) {
+    //for each object, output age
+    agesAll.push(obj.age);
+
+    // for (let property in obj) {
+    //   const ages = obj[property].age;
+    //   return agesAll.push(ages);
+    // }
+  }
+  return agesAll;
+}
+console.log(outputAge(programmers));
+
+//Polymorphism - redefine a method of a derived child class of a parent class 
+class Animal {
+  constructor(_nameOfAnimal) {
+    this.name = _nameOfAnimal;
+  }
+
+  makeSound() {
+    console.log(`Generic Animal Sound!`);
+  }
+
+}
+
+const a1 = new Animal("Kai");
+a1.makeSound();
+
+class Dog extends Animal {
+  constructor(_nameOfAnimal) {
+    super(_nameOfAnimal);
+  }
+  //Overriding method from parent class is polymorphism 
+  makeSound() {
+    super.makeSound(); //uses parent version of this same method
+    console.log(`I am a dog, my name is ${this.name} and I go Woof Woof!`);
+  }
+}
+
+const a2 = new Dog("Sadie");
+a2.makeSound();
+
+
 
 
 
@@ -194,8 +314,8 @@ things.size; // 0
 
 // setting key-value pairs is chainable
 things.set('🔧', 'Wrench')
-      .set('🎸', 'Guitar')
-      .set('🕹', 'Joystick');
+  .set('🎸', 'Guitar')
+  .set('🕹', 'Joystick');
 
 const myMap = new Map();
 
