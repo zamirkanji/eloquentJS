@@ -12,23 +12,23 @@ console.log(Object.getPrototypeOf(Object.prototype));
 
 //create an object with a specific prototype
 let protoRabbit = {
-    speak(line) {
-      console.log(`The ${this.type} rabbit says '${line}'`);
-    }
-  };
-  let killerRabbit = Object.create(protoRabbit);
-  killerRabbit.type = "killer";
-  killerRabbit.speak("SKREEEE!");
-  // → The killer rabbit says 'SKREEEE!'
+  speak(line) {
+    console.log(`The ${this.type} rabbit says '${line}'`);
+  }
+};
+let killerRabbit = Object.create(protoRabbit);
+killerRabbit.type = "killer";
+killerRabbit.speak("SKREEEE!");
+// → The killer rabbit says 'SKREEEE!'
 
 function Particle() {
-    this.x = 100;
-    this.y = 90;
+  this.x = 100;
+  this.y = 90;
 }
 
 //put show in prototype so they both point to here when they need this function
 Particle.prototype.show = function () {
-    point(this.x, this.y);
+  point(this.x, this.y);
 }
 
 let p = new Particle(); //new object - shows JS that Particle is a constructor Function
